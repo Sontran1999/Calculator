@@ -25,8 +25,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
         sharedPreferences = getSharedPreferences("result", MODE_PRIVATE)
         editor = sharedPreferences.edit()
-        tvFormula.text = sharedPreferences.getString("count", "") + sharedPreferences.getString("result", "")
-        if(tvFormula.text != ""){
+        tvFormula.text =
+            sharedPreferences.getString("count", "") + sharedPreferences.getString("result", "")
+        if (tvFormula.text != "") {
             btnClear.text = "AC"
         }
         viewModel = ViewModelCalculator()
@@ -100,13 +101,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    fun add(number: String){
-        viewModel.showNewFormula(sharedPreferences.getString("count", "") + sharedPreferences.getString("result", ""))
+    fun add(number: String) {
+        viewModel.showNewFormula(
+            sharedPreferences.getString(
+                "count",
+                ""
+            ) + sharedPreferences.getString("result", "")
+        )
         viewModel.add(number)
     }
 
-    fun operation(key: String){
-        viewModel.showNewFormula(sharedPreferences.getString("count", "") + sharedPreferences.getString("result", ""))
+    fun operation(key: String) {
+        viewModel.showNewFormula(
+            sharedPreferences.getString(
+                "count",
+                ""
+            ) + sharedPreferences.getString("result", "")
+        )
         viewModel.operation(key)
     }
 
@@ -117,14 +128,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             btnClear.text = "C"
             tvFormula.text = ""
         } else {
-            viewModel.clear("0","")
+            viewModel.clear("0", "")
             tvCount.text = "0"
             btnClear.text = "AC"
             tvResult.text = ""
         }
     }
 
-    private fun registerObserve(){
+    private fun registerObserve() {
         registerCount()
         registerFormula()
         registerResult()
@@ -170,7 +181,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             editor.apply()
         }
     }
-
 
 
 }

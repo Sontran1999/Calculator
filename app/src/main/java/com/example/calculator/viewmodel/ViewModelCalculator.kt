@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import net.objecthunter.exp4j.Expression
 import net.objecthunter.exp4j.ExpressionBuilder
 
-class ViewModelCalculator: ViewModel() {
+class ViewModelCalculator : ViewModel() {
     var count: MutableLiveData<String> = MutableLiveData()
     var result: MutableLiveData<String> = MutableLiveData()
     var formula: MutableLiveData<String> = MutableLiveData()
@@ -83,9 +83,9 @@ class ViewModelCalculator: ViewModel() {
         showNewCount(inputDisplayed)
     }
 
-    fun clear(input: String, output:String) {
-            inputDisplayed = input
-            outputDisplayed = output
+    fun clear(input: String, output: String) {
+        inputDisplayed = input
+        outputDisplayed = output
     }
 
     private fun getSign(lastOperation: String) = when (lastOperation) {
@@ -152,7 +152,7 @@ class ViewModelCalculator: ViewModel() {
         valuesToCheck.forEach {
             if (it.contains("%")) {
                 var number = it.dropLast(1)
-                var newString = number.toDouble()/100
+                var newString = number.toDouble() / 100
                 inputDisplayed = inputDisplayed.replace(it, newString.toString())
             }
         }
@@ -204,26 +204,27 @@ class ViewModelCalculator: ViewModel() {
         }
     }
 
-     fun showNewResult(value: String) {
+    fun showNewResult(value: String) {
         result.postValue(value)
     }
 
-     fun showNewFormula(value: String) {
+    fun showNewFormula(value: String) {
         formula.postValue(value)
     }
 
-     fun showNewCount(value: String) {
+    fun showNewCount(value: String) {
         count.postValue(value)
     }
 
-     fun nameClear(value: String){
+    fun nameClear(value: String) {
         clear.postValue(value)
     }
 
-    fun editorCount(value: String){
+    fun editorCount(value: String) {
         editorCount.postValue(value)
     }
-     fun editorResult(value: String){
-         editorResult.postValue(value)
-     }
+
+    fun editorResult(value: String) {
+        editorResult.postValue(value)
+    }
 }
